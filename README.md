@@ -91,10 +91,10 @@ multiple Stages.
 
     ```shell
     kargo create credentials github-creds \
-      --project kargo-advanced \
+      --project kargo-guestbook \
       --git \
       --username <yourgithubusername> \
-      --repo-url https://github.com/<yourgithubusername>/kargo-advanced.git
+      --repo-url https://github.com/<yourgithubusername>/kargo-guestbook.git
     ```
 
     As part of the promotion process, Kargo requires privileges to commit changes
@@ -104,7 +104,7 @@ multiple Stages.
 
     You now have a Kargo Pipeline which promotes images from the guestbook
     container image repository, through a multi-stage deploy pipeline.
-    Visit the`kargo-advanced` Project in the Kargo UI to see the deploy pipeline.
+    Visit the`kargo-guestbook` Project in the Kargo UI to see the deploy pipeline.
 
     ![pipeline](docs/pipeline.png)
 

@@ -2,7 +2,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: dev
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: red
 spec:
@@ -19,7 +19,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -41,7 +41,7 @@ spec:
         config:
           path: ./src/env/dev
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the env/dev
       # overlay to the ./out directory.
       - uses: kustomize-build
@@ -66,14 +66,14 @@ spec:
           apps:
           - name: guestbook-dev
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: staging
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: amber
 spec:
@@ -92,7 +92,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -114,7 +114,7 @@ spec:
         config:
           path: ./src/env/staging
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/staging overlay to the ./out directory.
       - uses: kustomize-build
@@ -139,14 +139,14 @@ spec:
           apps:
           - name: guestbook-staging
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: ab-test-a
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: yellow
 spec:
@@ -165,7 +165,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -187,7 +187,7 @@ spec:
         config:
           path: ./src/env/ab-test-a
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/ab-test-a overlay to the ./out directory.
       - uses: kustomize-build
@@ -212,7 +212,7 @@ spec:
           apps:
             - name: guestbook-ab-test-a
               sources:
-              - repoURL: https://github.com/akuity/kargo-advanced.git
+              - repoURL: https://github.com/jessesuen/kargo-guestbook.git
                 desiredCommitFromStep: commit
   verification:
     analysisTemplates:
@@ -222,7 +222,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: ab-test-b
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: green
 spec:
@@ -241,7 +241,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -263,7 +263,7 @@ spec:
         config:
           path: ./src/env/ab-test-b
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/ab-test-b overlay to the ./out directory.
       - uses: kustomize-build
@@ -288,7 +288,7 @@ spec:
           apps:
           - name: guestbook-ab-test-b
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit
   verification:
     analysisTemplates:
@@ -298,7 +298,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: prod
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: blue
 spec:
@@ -316,7 +316,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: prod-west
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: violet
 spec:
@@ -335,7 +335,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -357,7 +357,7 @@ spec:
         config:
           path: ./src/env/prod-west
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/prod-west overlay to the ./out directory.
       - uses: kustomize-build
@@ -382,14 +382,14 @@ spec:
           apps:
           - name: guestbook-prod-west
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: prod-central
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: violet
 spec:
@@ -408,7 +408,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -430,7 +430,7 @@ spec:
         config:
           path: ./src/env/prod-central
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/prod-central overlay to the ./out directory.
       - uses: kustomize-build
@@ -455,14 +455,14 @@ spec:
           apps:
           - name: guestbook-prod-central
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
   name: prod-east
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
   annotations:
     kargo.akuity.io/color: violet
 spec:
@@ -481,7 +481,7 @@ spec:
       # to the ./src directory, and the environment configuration to ./out.
       - uses: git-clone
         config:
-          repoURL: https://github.com/akuity/kargo-advanced.git
+          repoURL: https://github.com/jessesuen/kargo-guestbook.git
           checkout:
           - fromFreight: true
             path: ./src
@@ -503,7 +503,7 @@ spec:
         config:
           path: ./src/env/prod-east
           images:
-          - image: ghcr.io/akuity/guestbook
+          - image: ghcr.io/jessesuen/guestbook
       # Build the Kustomize configuration in the ./src directory using the
       # env/prod-east overlay to the ./out directory.
       - uses: kustomize-build
@@ -528,5 +528,5 @@ spec:
           apps:
           - name: guestbook-prod-east
             sources:
-            - repoURL: https://github.com/akuity/kargo-advanced.git
+            - repoURL: https://github.com/jessesuen/kargo-guestbook.git
               desiredCommitFromStep: commit

@@ -5,7 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: cat-fact
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
 spec:
   metrics:
   - name: cat-fact
@@ -23,7 +23,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: cat-fact-fail
-  namespace: kargo-advanced
+  namespace: kargo-guestbook
 spec:
   metrics:
   - name: cat-fact-fail
