@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook
-  namespace: guestbook-dev
+  name: guestbook-simple
+  namespace: guestbook-simple-dev
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook
+      app: guestbook-simple
   template:
     metadata:
       labels:
-        app: guestbook
+        app: guestbook-simple
     spec:
       containers:
-      - image: ghcr.io/jessesuen/guestbook:v0.0.89
-        name: guestbook
+      - image: ghcr.io/akuity/guestbook:v0.0.1
+        name: guestbook-simple
         ports:
         - containerPort: 3000
           name: http
